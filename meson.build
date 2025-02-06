@@ -174,17 +174,17 @@ webrtc_inc = include_directories('.')
 
 subdir('webrtc')
 
-pkgconfig = import('pkgconfig')
-
-pkgconfig.generate(
-  libwebrtc_audio_processing,
-  description: 'WebRTC Audio Processing library',
-  subdirs: include_subdir,
-  requires: pc_requires,
-  extra_cflags: [
-    '-DWEBRTC_LIBRARY_IMPL',
-  ] + platform_cflags,
-)
+#pkgconfig = import('pkgconfig')
+#
+#pkgconfig.generate(
+#  libwebrtc_audio_processing,
+#  description: 'WebRTC Audio Processing library',
+#  subdirs: include_subdir,
+#  requires: pc_requires,
+#  extra_cflags: [
+#    '-DWEBRTC_LIBRARY_IMPL',
+#  ] + platform_cflags,
+#)
 
 audio_processing_dep = declare_dependency(
   link_with: libwebrtc_audio_processing,
@@ -192,16 +192,16 @@ audio_processing_dep = declare_dependency(
   include_directories: [webrtc_inc]
 )
 
-meson.override_dependency(apm_project_name, audio_processing_dep)
-
-pkgconfig.generate(
-  libwebrtc_audio_coding,
-  description: 'WebRTC Audio Coding library',
-  subdirs: include_subdir,
-  extra_cflags: [
-    '-DWEBRTC_LIBRARY_IMPL',
-  ] + platform_cflags,
-)
+#meson.override_dependency(apm_project_name, audio_processing_dep)
+#
+#pkgconfig.generate(
+#  libwebrtc_audio_coding,
+#  description: 'WebRTC Audio Coding library',
+#  subdirs: include_subdir,
+#  extra_cflags: [
+#    '-DWEBRTC_LIBRARY_IMPL',
+#  ] + platform_cflags,
+#)
 
 audio_coding_dep = declare_dependency(
   link_with: libwebrtc_audio_coding,

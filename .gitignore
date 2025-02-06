@@ -9,3 +9,12 @@ build/
 depcomp
 install/
 subprojects/*/
+.idea
+ios_build/
+ios_build_simulator_arm64/
+ios_build_simulator_x86/
+mac_build_arm64/
+mac_build_x86/
+build_frameworks/
+pre_install
+webrtc_audio_processing.xcframework

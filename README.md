@@ -1,3 +1,29 @@
+# About This Repository
+
+Forked from https://gitlab.freedesktop.org/jbeich/webrtc-audio-processing. 
+
+Repository for building XCFrameworks for macOS and iOS.
+
+Refer to the instructions below for the build process.
+
+```bash
+$ meson setup mac_build_arm64 --cross-file cross_mac_arm64.ini -Dprefix=$PWD/pre_install/mac/arm64 -Ddefault_library=static && meson compile -C mac_build_arm64 && meson install -C mac_build_arm64
+
+$ meson setup mac_build_x86 --cross-file cross_mac_x86.ini -Dprefix=$PWD/pre_install/mac/x86 -Ddefault_library=static && meson compile -C mac_build_x86 && meson install -C mac_build_x86
+
+$ meson setup ios_build_simulator_arm64 --cross-file cross_ios_simulator_arm64.ini -Dprefix=$PWD/pre_install/simulator/arm64 -Ddefault_library=static && meson compile -C ios_build_simulator_arm64 && meson install -C ios_build_simulator_arm64
+
+$ meson setup ios_build_simulator_x86 --cross-file cross_ios_simulator_x86.ini -Dprefix=$PWD/pre_install/simulator/x86 -Ddefault_library=static && meson compile -C ios_build_simulator_x86 && meson install -C ios_build_simulator_x86
+
+$ /bin/bash create-lipo.sh
+
+$ meson setup ios_build --cross-file cross_ios.ini -Dprefix=$PWD/install/ios -Ddefault_library=static && meson compile -C ios_build && meson install -C ios_build
+
+$ /bin/bash create-framework.sh
+
+$ ls webrtc_audio_processing.xcframework
+```
+
 # About
 
 This is meant to be a more Linux packaging friendly copy of the AudioProcessing
