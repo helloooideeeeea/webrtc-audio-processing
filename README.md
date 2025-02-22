@@ -6,6 +6,8 @@ Repository for building XCFrameworks for macOS and iOS.
 
 Refer to the instructions below for the build process.
 
+***iOS/macOS***
+
 ```bash
 $ meson setup mac_build_arm64 --cross-file cross_mac_arm64.ini -Dprefix=$PWD/pre_install/mac/arm64 -Ddefault_library=static && meson compile -C mac_build_arm64 && meson install -C mac_build_arm64
 
@@ -22,6 +24,28 @@ $ meson setup ios_build --cross-file cross_ios.ini -Dprefix=$PWD/install/ios -Dd
 $ /bin/bash create-framework.sh
 
 $ ls webrtc_audio_processing.xcframework
+```
+
+***Android***
+
+### **🔔 Android Build Notice: Set NDK\_PATH**
+
+Before building for Android, you **must set the NDK path** in your environment.
+Modify your `cross_android_${ANDROID_ABI}(ex.aarch64)`.ini (or similar files) to include:
+
+```
+[constants]
+ndk_path    = '/Users/your_username/Library/Android/sdk/ndk/25.1.8937393' # Change this to your correct path
+```
+
+```bash
+$ meson setup android_build_aarch64 --cross-file cross_android_aarch64.ini -Dprefix=$PWD/pre_install/android/aarch64 && meson compile -C android_build_aarch64 && meson install -C android_build_aarch64
+
+$ meson setup android_build_armv7a --cross-file cross_android_armv7a.ini -Dprefix=$PWD/pre_install/android/armv7a && meson compile -C android_build_armv7a && meson install -C android_build_armv7a
+
+$ meson setup android_build_x86 --cross-file cross_android_x86_64.ini -Dprefix=$PWD/pre_install/android/x86 && meson compile -C android_build_x86 && meson install -C android_build_x86
+
+$ tree pre_install/android -L 3
 ```
 
 # About

@@ -15,6 +15,9 @@ ios_build_simulator_arm64/
 ios_build_simulator_x86/
 mac_build_arm64/
 mac_build_x86/
+android_build_aarch64/
+android_build_x86/
+android_build_armv7a/
 build_frameworks/
 pre_install
 webrtc_audio_processing.xcframework
